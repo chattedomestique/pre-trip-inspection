@@ -61,10 +61,32 @@ if bad: print('MISSING PARTS', bad); sys.exit(1)
 labels = {'say': 'You must say', 'point': 'Point and say', 'do': 'Do', 'ind': 'Indicate', 'tell': 'Tell the tester', 'note': 'Remember'}
 used = sorted({d for s in secs for d in [s['dia']] + [it['d'] for it in s['items'] if 'd' in it]})
 data = {'secs': secs, 'dias': {k: dia.DIA[k] for k in used}, 'labels': labels}
-js = 'var DATA=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + ';\n' + (B/'app.js').read_text()
+data_js = 'var DATA=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + ';'
 
-body = '<div class="page"><header class="appbar" id="bar"></header><div class="view" id="home"></div><div class="view" id="run" hidden></div></div>'
-out = f'<title>Pre-Trip Inspection</title>\n<style>{css}</style>\n{body}\n<script>{js}</script>\n'
-shell = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<meta name="color-scheme" content="light dark">\n</head>\n<body>\n'
-(ROOT/'pre-trip-inspection.html').write_text(shell + out + '</body>\n</html>\n')
-print(len(out)//1024, 'KB;', len(secs), 'sections;', sum(len(s['items']) for s in secs), 'lines;', len(used), 'diagrams')
+PAGE = lambda extra='': '<div class="page"><header class="appbar" id="bar"></header>' + extra + '<div class="view" id="home"></div><div class="view" id="run" hidden></div></div>'
+JS = (B/'app.js').read_text()
+shell_head = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<meta name="color-scheme" content="light dark">\n'
+
+# 1. the single file: opens from anywhere, no install
+out = f'<title>Pre-Trip Inspection</title>\n<style>{css}</style>\n{PAGE()}\n<script>var PWA=false;{data_js}\n{JS}</script>\n'
+(ROOT/'pre-trip-inspection.html').write_text(shell_head + '</head>\n<body>\n' + out + '</body>\n</html>\n')
+
+# 2. the installable app, in docs/ so GitHub Pages can serve it
+import hashlib
+DOCS = ROOT / 'docs'; (DOCS/'icons').mkdir(parents=True, exist_ok=True)
+head = (shell_head +
+  '<meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">\n<meta name="theme-color" content="#0e0e0e" media="(prefers-color-scheme: dark)">\n'
+  '<title>Pre-Trip Inspection</title>\n<link rel="manifest" href="manifest.webmanifest">\n'
+  '<link rel="icon" href="icons/icon-192.png" type="image/png">\n<link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">\n'
+  '<meta name="mobile-web-app-capable" content="yes">\n<meta name="apple-mobile-web-app-capable" content="yes">\n'
+  '<meta name="apple-mobile-web-app-title" content="Pre-Trip">\n<meta name="apple-mobile-web-app-status-bar-style" content="default">\n')
+update = '<div class="update" id="update" role="status" hidden><p>A new version is ready.</p><button class="btn" data-size="sm" data-variant="primary" type="button" id="update-go">Reload</button></div>'
+pwa_css = (B/'pwa.css').read_text()
+index = (head + f'<style>{css}{pwa_css}</style>\n</head>\n<body>\n{PAGE(update)}\n<script>var PWA=true;{data_js}\n{JS}</script>\n<script>{(B/"pwa.js").read_text()}</script>\n</body>\n</html>\n')
+(DOCS/'index.html').write_text(index)
+(DOCS/'manifest.webmanifest').write_text((B/'manifest.webmanifest').read_text())
+(DOCS/'.nojekyll').write_text('')
+h = hashlib.sha1()
+for p in [DOCS/'index.html', DOCS/'manifest.webmanifest'] + sorted((DOCS/'icons').glob('*.png')): h.update(p.read_bytes())
+(DOCS/'sw.js').write_text((B/'sw.js').read_text().replace('__VERSION__', h.hexdigest()[:10]))
+print('pre-trip-inspection.html and docs/ written; app version', h.hexdigest()[:10])

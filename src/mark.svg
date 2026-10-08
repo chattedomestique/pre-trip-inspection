@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<!-- The front of a bus: an outline, with the part being checked filled in. Kept inside the middle 400 of the canvas. -->
+<rect x="84" y="72" width="344" height="332" rx="52" fill="none" stroke="#141414" stroke-width="28"/>
+<rect x="124" y="124" width="116" height="104" rx="12" fill="#141414"/>
+<rect x="272" y="124" width="116" height="104" rx="12" fill="none" stroke="#141414" stroke-width="16"/>
+<circle cx="154" cy="316" r="26" fill="none" stroke="#141414" stroke-width="16"/>
+<circle cx="358" cy="316" r="26" fill="none" stroke="#141414" stroke-width="16"/>
+<line x1="214" y1="316" x2="298" y2="316" stroke="#141414" stroke-width="16" stroke-linecap="round"/>
+<rect x="112" y="404" width="64" height="48" rx="8" fill="#141414"/>
+<rect x="336" y="404" width="64" height="48" rx="8" fill="#141414"/>
+</svg>

@@ -5,6 +5,19 @@
   var root = document.documentElement;
   var SECS = DATA.secs, BYID = {}, DONE = {};
   SECS.forEach(function (s) { BYID[s.id] = s; DONE[s.id] = {}; });
+  // What you have said is kept on this device, so closing the app does not lose your place.
+  var STORE = 'pti-progress-v1';
+  function load() {
+    try {
+      var o = JSON.parse(localStorage.getItem(STORE) || '{}');
+      SECS.forEach(function (s) {
+        var d = o[s.id];
+        if (d && typeof d === 'object') Object.keys(d).forEach(function (k) { if (+k >= 0 && +k < s.items.length) DONE[s.id][k] = true; });
+      });
+    } catch (e) {}
+  }
+  function save() { try { localStorage.setItem(STORE, JSON.stringify(DONE)); } catch (e) {} }
+  load();
   var mq = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
   var reduced = function () { return !!(mq && mq.matches); };
 
@@ -32,12 +45,14 @@
   // ---------------------------------------------------------------- appbar
   function setBar(mode, sec) {
     if (mode === 'home') {
-      bar.innerHTML = '<div class="appbar__heading"><p class="appbar__eyebrow t-meta">Forest Hills Public Schools · current as of 7/22/2026</p><h1 class="appbar__title" id="bar-t" tabindex="-1">Pre-trip inspection</h1></div>';
+      bar.innerHTML = '<div class="appbar__heading"><p class="appbar__eyebrow t-meta">Forest Hills Public Schools · current as of 7/22/2026</p><h1 class="appbar__title" id="bar-t" tabindex="-1">Pre-trip inspection</h1></div>' +
+        (PWA ? '<div class="appbar__end"><button class="btn" data-size="sm" type="button" id="install" hidden>Install</button></div>' : '');
+      if (window.pwaSync) window.pwaSync();
     } else {
       bar.innerHTML = '<button class="btn" data-shape="circle" data-size="sm" type="button" id="bar-back" aria-label="All sections">' + icon('chevron-left') + '</button>' +
         '<div class="appbar__heading"><p class="appbar__eyebrow t-meta">Pg. ' + sec.pg + (sec.sub ? ' · ' + esc(sec.sub) : '') + '</p><h1 class="appbar__title" id="bar-t" tabindex="-1">' + esc(sec.title) + '</h1></div>' +
         '<div class="appbar__end"><button class="btn" data-shape="circle" data-size="sm" type="button" id="restart" aria-label="Start this section over">' + icon('rotate-ccw') + '</button></div>';
-      $('bar-back').addEventListener('click', showHome);
+      $('bar-back').addEventListener('click', goHome);
       $('restart').addEventListener('click', function () { RUN && RUN.restart(); });
     }
   }
@@ -64,11 +79,13 @@
     Array.prototype.forEach.call(home.querySelectorAll('[data-sec]'), function (b) { b.addEventListener('click', function () { openSection(b.getAttribute('data-sec')); }); });
     $('go').addEventListener('click', function () {
       if (nx) openSection(nx.id);
-      else { SECS.forEach(function (s) { DONE[s.id] = {}; }); buildHome(); }
+      else { SECS.forEach(function (s) { DONE[s.id] = {}; }); save(); buildHome(); }
     });
     var cur = home.querySelector('[data-next]'), box = $('homebox');
     if (cur) box.scrollTop = Math.max(0, cur.parentNode.offsetTop - cur.parentNode.offsetHeight);
   }
+  // In an installed app the device's back button should leave a section, not the app.
+  function goHome() { if (PWA && history.state && history.state.s) history.back(); else showHome(); }
   function showHome() {
     if (RUN) { RUN.destroy(); RUN = null; }
     run.hidden = true; run.innerHTML = ''; home.hidden = false;
@@ -77,8 +94,9 @@
 
   // ---------------------------------------------------------------- run a section
   var RUN = null;
-  function openSection(sid) {
+  function openSection(sid, fromPop) {
     var sec = BYID[sid];
+    if (PWA && !fromPop) { try { history.pushState({ s: sid }, '', location.href); } catch (e) {} }
     home.hidden = true; home.innerHTML = ''; run.hidden = false;
     setBar('run', sec);
     RUN = makeRun(sec);
@@ -225,9 +243,9 @@
       cur = n; render(); rollTo(cur, true);
     }
     function onNext() {
-      done[cur] = true;
+      done[cur] = true; save();
       if (cur < N - 1) go(cur + 1);
-      else { render(); showHome(); }
+      else { render(); goHome(); }
     }
     function onBack() { go(cur - 1); }
     rows.forEach(function (row, i) { row.addEventListener('click', function () { go(i); }); });
@@ -239,10 +257,16 @@
     rollTo(0, false);
 
     return {
-      restart: function () { Object.keys(done).forEach(function (k) { delete done[k]; }); dir = -1; cur = 0; render(); rollTo(0, true); },
+      restart: function () { Object.keys(done).forEach(function (k) { delete done[k]; }); save(); dir = -1; cur = 0; render(); rollTo(0, true); },
       destroy: function () { stopMove(); }
     };
   }
 
-  showHome();
+  if (PWA) window.addEventListener('popstate', function (e) {
+    var st = e.state;
+    if (st && st.s && BYID[st.s]) { if (RUN) { RUN.destroy(); RUN = null; } home.hidden = true; home.innerHTML = ''; openSection(st.s, true); }
+    else showHome();
+  });
+  if (PWA && history.state && history.state.s && BYID[history.state.s]) openSection(history.state.s, true);
+  else showHome();
 })();
