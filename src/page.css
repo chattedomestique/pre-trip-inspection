@@ -1,0 +1,63 @@
+/* One-screen app. Appbar on top, then one view fills the rest: the section list (home) or a section (run).
+   Nothing is sticky; the list inside a view is the only thing that scrolls. */
+:root{color-scheme:light dark}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+html{height:100%;box-sizing:border-box;padding-block-end:0}
+body{height:100%;min-block-size:0;margin:0;overflow:hidden;font:var(--type-body);color:var(--ink);background:var(--canvas);-webkit-font-smoothing:antialiased}
+.page{block-size:100%;max-inline-size:40rem;margin-inline:auto;display:flex;flex-direction:column;overflow:hidden}
+.page>.appbar{flex:none;margin-inline:var(--space-4)}
+.view{flex:1 1 0;min-block-size:0;display:flex;flex-direction:column;gap:var(--space-3);padding-block-start:var(--space-3);padding-inline:var(--space-4);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
+.view[hidden]{display:none}
+.view>*{min-inline-size:0;flex:none}
+.appbar__eyebrow{text-transform:none;letter-spacing:0}
+.appbar [tabindex="-1"]:focus{outline:none}
+
+/* Diagram stage */
+.view>.stage{flex:1 1 auto;min-block-size:0;justify-content:center}
+.stage{background:var(--paper);border:var(--bw) solid var(--line);border-radius:var(--radius-card);padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2)}
+.dias{display:grid}
+.dias>.dia{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity var(--dur-move) var(--ease-flip),visibility 0s linear var(--dur-move)}
+.dias>.dia.is-shown{opacity:1;visibility:visible;transition-delay:0s}
+.swap{animation:swap-in var(--dur-enter) var(--ease-out) both}
+@keyframes swap-in{from{opacity:0;transform:translateY(calc(8px * var(--move)))}to{opacity:1;transform:none}}
+
+/* The list takes all the room between the diagram and the chin. */
+.view>.linebox{flex:1000 1 0;min-block-size:5.5rem}
+.linebox{position:relative;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border:var(--bw) solid var(--line);border-radius:var(--radius-card);background:var(--paper)}
+.linebox .list{border:0}
+.linebox .list__row{block-size:2.75rem;min-block-size:0;align-items:center}
+.list__title{display:flex;align-items:baseline;gap:var(--space-3);font-size:1rem}
+.list__idx{font-variant-numeric:tabular-nums;font-weight:700;min-inline-size:2.5ch;flex:none}
+.linebox .list__row:not([aria-current]) .is-done-t{color:var(--ink-soft)}
+
+/* Section list on the home view */
+.view>.homebox{flex:1 1 0;min-block-size:6rem;max-block-size:none}
+.homebox .list__row{block-size:auto;min-block-size:3.5rem;align-items:center}
+.homebox .list__title{font-size:1rem;align-items:baseline}
+.homebox .list__meta{display:block}
+.homebox .count{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.homebox .list__trail{gap:var(--space-2)}
+
+/* The chin: an inverted surface at the bottom with what you say, word for word, and the buttons. */
+.chin{margin-inline:calc(var(--space-4) * -1);margin-block-start:auto;padding:var(--space-4);padding-block-end:calc(var(--space-4) + env(safe-area-inset-bottom,0px));border-radius:var(--radius-card) var(--radius-card) 0 0;display:flex;flex-direction:column;gap:var(--space-3)}
+.chin__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3)}
+.chin__head>*{margin:0}
+.chin__say{display:grid}
+.say{grid-area:1/1;margin:0;font:500 clamp(1.35rem,4.2vw + .6rem,1.75rem)/1.26 var(--font-sans);letter-spacing:-.005em;text-wrap:pretty;overflow-wrap:break-word;
+  opacity:0;visibility:hidden;transform:translateY(calc(var(--dir,1) * 14px * var(--move)));
+  transition:opacity var(--dur-enter) var(--ease-out),transform var(--dur-enter) var(--ease-out),visibility 0s linear var(--dur-enter)}
+.say.s-md{font-size:clamp(1.15rem,3.4vw + .5rem,1.4rem);line-height:1.3}
+.say.s-sm{font-size:clamp(1rem,2.8vw + .45rem,1.18rem);line-height:1.34}
+.say strong{font-weight:800}
+.say.is-out{transform:translateY(calc(var(--dir,1) * -14px * var(--move)))}
+.say.is-on{opacity:1;visibility:visible;transform:none;transition-delay:60ms,60ms,0s}
+.chin__bar{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-3)}
+.chin__bar.one{grid-template-columns:minmax(0,1fr)}
+.chin__bar .btn{inline-size:100%}
+.chin .next-up{margin:0;font:500 clamp(1.35rem,4.2vw + .6rem,1.75rem)/1.26 var(--font-sans);text-wrap:balance}
+@media (max-height:620px){.dia{max-block-size:20svh}.chin{padding-block-start:var(--space-3)}}
+
+/* Short sections get a bigger picture; the list never grows past its own lines. */
+.view[data-size="few"] .dia{max-block-size:44svh}
+.view[data-size="some"] .dia{max-block-size:34svh}

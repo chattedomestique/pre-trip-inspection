@@ -1,0 +1,9 @@
+/* Installed-app additions: safe areas, the update notice and the install button. */
+html{padding-block-start:env(safe-area-inset-top,0px)}
+.page>.appbar{margin-inline:max(var(--space-4),env(safe-area-inset-left,0px)) max(var(--space-4),env(safe-area-inset-right,0px))}
+.view{padding-inline:max(var(--space-4),env(safe-area-inset-left,0px)) max(var(--space-4),env(safe-area-inset-right,0px))}
+.chin{margin-inline:calc(max(var(--space-4),env(safe-area-inset-left,0px)) * -1) calc(max(var(--space-4),env(safe-area-inset-right,0px)) * -1);padding-inline:max(var(--space-4),env(safe-area-inset-left,0px)) max(var(--space-4),env(safe-area-inset-right,0px))}
+.btn[hidden]{display:none!important}
+.update{flex:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin:var(--space-3) max(var(--space-4),env(safe-area-inset-left,0px)) 0 max(var(--space-4),env(safe-area-inset-right,0px));padding:var(--space-2) var(--space-3);background:var(--paper);border:var(--bw) solid var(--line);border-radius:var(--radius-card)}
+.update[hidden]{display:none}
+.update p{margin:0;font-weight:600}

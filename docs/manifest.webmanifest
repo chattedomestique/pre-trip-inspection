@@ -1,0 +1,19 @@
+{
+  "id": "/pre-trip-inspection/",
+  "name": "Pre-Trip Inspection",
+  "short_name": "Pre-Trip",
+  "description": "The school bus pre-trip inspection, one section at a time, with what to say word for word.",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#f5f5f5",
+  "color_scheme_dark": { "background_color": "#0e0e0e", "theme_color": "#0e0e0e" },
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

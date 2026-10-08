@@ -1,0 +1,285 @@
+# Section: ## id | title | pg | diagram | default label | sub
+# Line:    index | short name | p=part,part dia=x lab=y | the text, word for word. **bold**, *italic*
+# labels: say, point, do, ind, tell, note       p=* highlights everything in the diagram
+
+## enter | Enter the bus | 1 | entry | say | 
+1 | Handrails and steps | p=rail,tread,step | Every time you enter the bus **you must say: "I'm using the handrails, they are secure, the tread is good, and the steps are free of debris."**
+
+## seat | Seat and seatbelt check | 1 | seat | ind | You will not sit in the seat
+1 | Seat | p=seat,bolts | Indicate the **seat** is **secure** to the floor with bolts and there are **no missing bolts**.
+2 | Shoulder strap | p=strap,bracket | Indicate the **shoulder strap** has **no cuts or frays** and it is **secure** to the side wall and to the bracket.
+3 | Lap belt | p=lap,lapends | Indicate the **lap belt** is secure at **both ends** and has **no cuts or frays**.
+4 | Connect and release | p=buckle,strap,lap | **Connect the seatbelt and release** – indicate that **all parts are secure** and in **good working order** and it adjusts properly.
+
+## equip | Emergency equipment | 1 | equip | point | Point and say
+1 | First aid kit | p=aid | **FIRST AID KIT** – has **9 items** – it is **properly mounted, sealed, and secure**
+2 | Body fluid kit | p=fluid | **BODY FLUID KIT** – point to **compartment** where it is
+3 | Fire extinguisher | p=ext | **FIRE EXTINGUISHER** – it is reading in the green and is **properly mounted and secure**
+4 | Reflective triangles | p=tri | **REFLECTIVE TRIANGLES** – point to them and **indicate** they are **secure** and there are **3 of them**
+5 | Flares | p=flare | **FLARES** – point to them and **indicate** they are **secure** and there are **3 of them**
+6 | Circuit breakers | p=cb | This **BUS** is equipped with **circuit breakers** – they can be accessed from the **outside**
+
+## start | Safe start | 1 | dash | say | Seat belt on, then start
+1 | Seat belt on | p=wheel lab=do | Sit in driver seat – Put seatbelt on
+2 | Safe start | p=shift,pbrake | **YOU MUST SAY: "I'm checking for a safe start. The bus is in neutral, and the brake is set."**
+2a | ABS light | p=key,abs lab=ind | Turn the key to the right and **indicate** that the **ABS light comes on** and **goes off**
+3 | Start the engine | p=key lab=do | Now **you will start the engine**
+4 | Air pressure | p=air | **YOU MUST SAY: "There is at least 120 to 140 pounds of pressure in both air tanks."**
+5 | Drive and down through the gears | p=sbrake,shift lab=do | Apply your **foot** to the **service brake** and put the **bus in drive** / move **downward through** the gears.
+5a | Shift lever | p=shift lab=ind | **Indicate** the shift lever moves **smoothly** through the gears
+6 | Up to reverse | p=shift lab=do | Bring the gear shift back **up** to **reverse**
+6a | Backup beeper | p=backup lab=ind | **Indicate** the **backup beeper** is working
+6b | White back-up lights | p=backup lab=ind | **Indicate** the **white back-up lights** are **visible** on the panel
+7 | Neutral | p=shift lab=do | Put the bus back in **neutral**
+
+## brake | Brake system check | 2 | dash | say | Automatic fail if any step is missed
+0 | Tell the tester | p=air lab=tell | **TELL THE TESTER YOU ARE NOW GOING TO CHECK THE ENTIRE BRAKE SYSTEM ON THE BUS.**
+1 | Parking brake engaged | p=pbrake,air,tach,shift lab=do | With Parking Brake **Engaged** – make sure you have between **120-140 PSI**. Then put the bus in Drive – accelerate to **1100 RPMs**.
+1a | Parking brake holds | p=pbrake | This will **check** the parking brake – **SAY: "The parking brake holds properly."**
+2 | Right foot on the brake | p=sbrake,air lab=do | Apply **RIGHT** foot to the **brake pedal** (Make sure you have between **120-140 PSI**)
+2a | Disengage parking brake | p=pbrake lab=do | **Disengage** parking brake
+2b | Into gear | p=shift lab=do | **Put** the bus in gear
+2c | Let it roll | p=sbrake lab=do | **Take** your **foot off** the brake pedal, allowing the **bus** to roll **SLIGHTLY** forward
+2d | Stop and neutral | p=sbrake,shift,pbrake lab=do | **Press** on the **brake pedal** to stop the bus. **Put the bus back in Neutral, re-apply brake**
+2e | Service brake works | p=sbrake lab=tell | **Tell Tester – "The service brake works properly, there is no pulling from one side to the other."**
+3 | Pressure builds back | p=air lab=tell | **Tell the tester – "I'm allowing the pressure to build back up to normal range of 120/140 psi."**
+4 | Cut-off point | p=air | Once **pressure** has **reached** the **cut-off point**, **you must say – "I am now testing that the air brake system functions properly."**
+5 | Key back on | p=key lab=do | **Shut down** the bus and then **turn** the **key to the right** – This turns the **power back on** to the bus
+6 | Three pound test | p=air | **YOU MUST SAY: "I am now going to test that the air in both tanks does not drop more than 3 lbs. of pressure in one minute. Would you time me?"**
+6a | Hold the service brake | p=sbrake,pbrake lab=do | **Press foot on THE SERVICE BRAKE** then **DISENGAGE** the **parking brake** and **hold** your **foot** on the **service brake** for **one minute**. (It actually will not be one minute)
+6b | Initial drop | p=air | You will see **both air tank needles drop** in pressure, then stop. That's when you indicate to the tester: **"There was an initial drop in pressure but both tanks are holding."**
+7 | Pump the brake | p=sbrake lab=do | When the **tester tells you** to continue: **You will then begin to pump your brake fast**
+8 | Lights and buzzers | p=air,pbrake | **You must indicate and say: The lights and buzzers will sound at 55 psi and at 40 psi the parking brake reengages (pops out).** *Specify exact values per bus driven.*
+9 | Brake system works | p=air | **YOU MUST SAY: "The air brake system is functioning properly."**
+10 | Build air back up | p=air,key lab=tell | **NOW TELL THE TESTER YOU ARE STARTING THE BUS TO BUILD AIR PRESSURE BACK UP IN BOTH TANKS TO READ 120-140**
+! | Automatic fail | p=* lab=note | ***IF YOU DO NOT COMPLETE ALL THE STEPS OF THE AIR BRAKE CHECK, IT IS AN AUTOMATIC FAIL OF THE TEST***
+
+## toggles | Inside panel toggle switches | 3 | cab | tell | Say to the tester
+1 | Steering wheel | p=wheel | **Steering Wheel** – Move slightly and **indicate** there is **no more than 2" of play**
+2 | Horn | p=horn | **Sound the horn** – (BEEP!)
+3 | Wipers | p=wipers,sw_wiper | **Wipers** – Low/High. Turn wipers **on and off**; indicate they **are not damaged** and are **tight to the windshield** & have **proper spring tension**.
+4 | Washer fluid | p=lever | **Washer Fluid** – Test fluid by **pushing in the end** of the **turn signal lever**; indicate it **functions properly**
+5 | Windshield | p=wind | **Windshield** – indicate **free of cracks, unapproved stickers, & stone chips**
+6 | Mirrors | p=mirtop,mirlow,mircross,mirin lab=say | **MIRRORS – POINT AND IDENTIFY – YOU MUST SAY:**
+6A | Top mirrors | p=mirtop lab=say | **6A. Top Mirrors:** Lets you **see traffic behind** and on the **side of the bus**
+6B | Lower mirrors | p=mirlow lab=say | **6B. Lower Mirrors:** Lets you **see** the **side of the bus** and **rear duals**
+6C | Cross view mirrors | p=mircross lab=say | **6C. Cross View Mirrors:** Lets you **see the front of the bus** and **around front tires**
+6D | Inside mirror | p=mirin lab=say | **6D. Inside Mirror:** Lets you **see** the **interior** of the **bus**
+6E | Mirrors adjusted | p=mirtop,mirlow,mircross,mirin lab=say | ***YOU MUST SAY ALL THE MIRRORS HAVE BEEN ADJUSTED FOR ME***
+7 | Driver's fans | p=fans | **Driver's fans** – indicate the **two locations** & they function on **high/low**
+8 | Stairwell heater | p=stair | **Stairwell Heater** – Indicate **location** & function on **high/low**
+9 | Driver heater and defroster | p=defrost | **Driver Heater/Defroster** – Indicate **location** and **functions** on **high/low**
+10 | Roof hatch and power vent | p=hatch1 dia=plan | **Roof Hatch/Power Vent** – Indicate **location** & it's working properly
+11 | Rear heat | p=heatr dia=plan | **Rear Heat (2)** – Indicate **location** and **functions** high/low
+12 | 2nd roof hatch and power vent | p=hatch2 dia=plan | **2nd Roof Hatch/Power Vent** – Indicate **location** & it's working properly
+13 | Heated mirror | p=sw_heat,mirtop | **Heated Mirror** – Turn **on** and indicate (**red light** on switch is **working**)
+14 | Strobe | p=sw_strobe | **Strobe** – Turn **on** and **leave on**; indicate you will **check it later**
+15 | Interior lights | p=sw_int | **Interior Lights** – Go through **all switches**; indicate where **in the bus** & **function properly**
+16 | Entry door knob | p=doorlev | **Entry Door Knob** – Indicate it's **secure/opens/closes** & **functions properly**
+17 | Master noise switch | p=sw_noise | **Master Noise Switch** – Yellow/Red noise button – Identify **controls** AM/FM radio & fans
+
+## dash | Dashboard instrument panel | 4 | dash | ind | Move from left to right
+1 | Transmission gauge | p=trans | **Transmission gauge:** **Indicate** what the gauge is reading
+2 | Water temperature gauge | p=water | **Water temperature gauge:** **Indicate** what the gauge is reading
+3 | Oil pressure gauge | p=oil | **Oil pressure gauge:** **Indicate** what the gauge is reading
+4 | DEF gauge | p=def | **DEF gauge:** **Indicate** what the gauge is reading
+5 | Tachometer | p=tach | **Tachometer:** **Indicate** what the gauge is reading
+6 | Speedometer | p=speed | **Speedometer:** **Indicate** it worked on the way up here
+7 | Fuel gauge | p=fuel | **Fuel gauge:** **Indicate** what the gauge is reading
+8 | Volt meter | p=volt | **Volt meter:** **Indicate** what the gauge is reading
+9 | Air pressure gauges | p=air | **Air pressure gauges:** **Read – Indicate both tanks are back to normal operating range of 120 to 140 lbs.**
+! | All gauges | p=trans,water,oil,def,tach,speed,fuel,volt,air lab=say | **INDICATE THAT ALL GAUGES ARE FUNCTIONING PROPERLY**
+10 | Ignition key and casing | p=key lab=do | **Ignition key/casing:** **Not loose or broken** – Touch key and wiggle
+! | Shut off, then power on | p=key lab=note | **NOTE:** You will shut the engine off on the bus, then turn the key to the right to give it power.
+! | Check all lights | p= lab=tell | ***YOU WILL TELL THE TESTER THAT YOU ARE NOW GOING TO CHECK ALL LIGHTS ON THE BUS***
+! | Lamp check switch | p=lamp lab=do | **YOU WILL NEED TO ACTIVATE YOUR LAMP CHECK SWITCH FROM THE DRIVER'S SEAT**
+
+## lamp | Lamp check from the driver's seat | 5 | front | say | Point at your monitor, dash and mirrors
+0 | I can see | p= | **FROM THE DRIVER'S SEAT YOU MUST SAY & POINT – I CAN SEE in my Monitor, Dash & Mirrors**
+a | Clearance lights | p=clr | **5 clearance lights**
+b | Overhead red lights | p=red | **Alternating Overhead Red Lights**
+c | Overhead amber lights | p=amber | **Alternating Overhead Amber Lights**
+d | Headlights | p=head | **Headlights / High Beams & Low Beams are functioning**
+e | Hazards | p=turn | **Hazards**
+f | Turn signals | p=turn | **Turn Signals**
+g | Reverse and brake lights | p=rev,brake dia=rear | **Reverse Lights & Brake Lights**
+h | All functioning | p=* dia=front | **ALL ARE FUNCTIONING PROPERLY**
+i | Open the door | p=glass,seal dia=entry lab=do | **Open the door**
+j | Exit the bus | p= dia=entry lab=say | **Mention you will now exit the bus to continue the light check**
+
+## front | Front of bus | 5 | front | say | Say the following
+1 | Level and no leaks | p=level | **Bus is sitting level**, not leaning left or right (crouch down). **Nothing is leaking.**
+2 | Amber clearance lights | p=clr | The **5 AMBER clearance lights** are **functioning properly** with **no damage**
+3 | Alternating reds | p=red | The **Alternating REDS** are **functioning properly** with **no damage**
+4 | Alternating ambers | p=amber | The **Alternating AMBERS** are **functioning properly** with **no damage**
+5 | Reflective tape | p=tape | The **Reflective Lighting Tape** is all in place with **no damage**
+6 | Windshield | p=wind | The **Windshield** is **clean**, free from unapproved stickers, and has **no damage**
+7 | Headlights | p=head | The **Headlights, High beams & Low beams** are on with **no damage**
+8 | Hazard and turn lights | p=turn | The **Hazard/Turn Signal Lights** are **functioning properly** with **no damage**
+9 | Door side mirrors | p=mirdoor lab=point | **Check** the **door side Cross View & Mounted top mirrors** – properly mounted with no damage
+10 | Driver's side mirrors | p=mirdrv lab=point | **Check** the **driver's side Cross View & Mounted top Mirrors** – properly mounted with no damage
+
+## driver | Driver side of bus | 6 | side-driver | say | You must say
+1 | Clearance lights | p=clr | **2 Amber and 1 red clearance lights** are working properly with **no damage**
+2 | Windows | p=win | **Windows** are all clean with **no damage**
+3 | Tape and reflectors | p=tape | **All Reflective Lighting Tape** is in place along with **2 amber and 1 red circle reflectors**. They are all attached with **no damage**
+4 | Circuit breaker box | p=brk | **Circuit breaker box** located here
+5 | Battery box | p=batt | **Battery box** – all batteries & cables are **secure**, not leaking & caps are **on tight**.
+6 | Stop sign | p=stop1 | **Stop sign** is properly mounted and **all lights are working** with **no damage**
+7 | Hazard and turn lights | p=turn | **Hazard lights/Turn signal lights (3)** are **working properly** with **no damage**
+8 | Tail pipe | p=tail | **Tail pipe** is secure and **extends past the side of the bus** and there is **no sign of visible soot**
+9 | Reverse lights | p=rev | **Reverse lights** work and **function properly** when bus is running and in reverse
+10 | Stop sign #2 | p=stop2 | **Stop sign #2** is **properly mounted** and **all lights are working** with **no damage**
+
+## rear | Rear side of bus | 6 | rear | say | You must say
+1 | Red clearance lights | p=clr | **5 RED clearance lights** are **working properly** with **no damage**
+2 | Alternating ambers | p=amber | **Alternating Ambers** are **working properly** with **no damage**
+3 | Alternating reds | p=red | **Alternating Reds** are **working properly** with **no damage**
+4 | Reflective tape | p=tape | **Reflective Lighting Tape** is all in place with **no damage**
+5 | Windows | p=win | **Windows** are clean with **no damage**
+6 | Tail lights | p=tail | **Tail Lights** are **working properly** with **no damage**
+7 | Brake lights | p=brake | The **Brake Lights** come on, **function properly** with **no damage**
+8 | Hazard and turn lights | p=turn | **Hazard Lights/Turn signals** are **working properly** with **no damage**
+9 | Reverse lights | p=rev | **Reverse Lights** are **working properly** with **no damage**
+10 | Rear door | p=door | **Door** opens, **locks into position**, **buzzer sounds**, **seals and hinges** are **in place** and **not damaged**
+11 | License plate | p=plate | **License Plate** is **secure** and the **light** is **working** with **no damage**
+12 | Red circle reflectors | p=refl | **2 RED circle reflectors** are **secured** with **no damage**
+13 | Rear step | p=step | **Step at the back of the bus** is **secure** / **no damage**
+
+## doorside | Door side of bus | 7 | side-door | say | You must say
+1 | Clearance lights | p=clr | **1 RED and 2 AMBER clearance lights** are **working properly** with **no damage**
+2 | Windows | p=win | **Windows** are all clean with **no damage**
+3 | Reflective tape | p=tape | **Reflective lighting tape** is all in place with **no damage**
+4 | Circle reflectors | p=refl | **1 RED and 2 AMBER circle reflectors** are **secure** with **no damage**
+5 | Reverse light | p=rev | **Reverse light** works and functions properly when bus is running and in reverse
+6 | Hazard and turn lights | p=turn | **Hazard/Turn Signal Lights (3)** are **functioning properly** with **no damage**
+
+## doorinsp | Door inspection | 7 | entry | say | You must say
+1 | Door | p=hinge,seal,glass | **Door** is **secure**, there are **no hinges or bolts missing**, **seal is soft to the touch**, **glass is clean and not damaged**
+2 | Entry lights | p=lights | **Entry Lights:** both lights are **working** with **no damage**
+3 | Handrails | p=rail | **Handrails:** both handrails are **secure** with **no damage**. **MUST USE AT ALL TIMES**
+4 | Steps | p=step,tread | **Steps** are **clean** and **free of debris**. The **rubber tread** is in **good condition**
+
+## engine1 | Engine compartment: door side | 8 | engine | point | Point and say
+0 | The thumper | p= lab=do | **GO IN AND GRAB THE THUMPER**
+0b | Open the hood | p= lab=do | **OPEN HOOD**
+1 | Radiator | p=rad | **Radiator:** **Secured** with **bolts** and **no bolts are missing**. It is **not leaking or cracked** and **all hoses are connected** at **both ends** with **no cuts, frays, or leaks**
+2 | Fan blades | p=fan | **Fan Blades:** are **secure**, **not cracked** and **no missing blades**
+3 | Serpentine belt | p=belt | **Serpentine Belt:** Belt **is tight** and there are **no cuts or frays** and **no signs of wear** (push on belt – no excessive play).
+4 | Alternator | p=alt | **Alternator:** Is **secured** with **bolts** and **no bolts are missing**. All **wires** are **securely fastened** and **not damaged**. It is **belt driven** and **no cracks or damage**
+5 | Water pump | p=wpump | **Water Pump:** Is **secured** with **bolts** and **no bolts are missing**. It is **belt driven** and there are **no cracks, damage**, and is **not leaking**.
+6 | Air filter | p=airf | **Air Filter:** **Secured** with **bolts** and **no bolts are missing**. **All clamps and brackets are secure**. **All hoses are connected** at **both ends** with **no cuts, frays, or leaks**.
+7 | Frame | p=frame | **Frame:** Runs the **length of the bus**, it is **properly mounted**, **no bolts are missing**, and is **not cracked or bent**
+8 | Washer fluid reservoir | p=washer | **Washer fluid reservoir:** Has **adequate fluid level** and is **secure** and **not leaking**.
+
+## engine2 | Engine compartment: driver's side | 9 | engine | point | Point and say
+1 | Coolant reservoir | p=coolant | **Coolant Reservoir:** Properly **mounted** and **secure** with **no leaks**. Clear reservoir is visible to see **adequate fluid level**. **Cap is on tight** (check). Hoses are **connected at both ends** with **no cuts, frays, or leaks**.
+2 | Power steering fluid reservoir | p=psres | **Power Steering Fluid Reservoir:** Properly **mounted** and **secure** with **no leaks**. There is an **adequate level** and the **cap is on tight** (check). NOTE: **Follow hoses to the power steering pump.**
+3 | Power steering pump | p=pspump | **Power Steering Pump:** Point and indicate it is **properly mounted, secure**, and **not cracked or leaking**. It is **Gear Driven**. **All hoses are connected at both ends** with **no cuts, frays, or leaks**.
+4 | Air compressor | p=compr | **Air Compressor:** Point and indicate it is **properly mounted, secure**, and **not leaking**. It is **Gear Driven**. **All hoses are connected at both ends** with **no cuts, frays, or leaks**.
+5 | Oil fill dipstick | p=oildip | **Oil Fill Dipstick: (yellow cap)** Indicate the **cap is on tight** and there is **no damage**. Mention you would normally **pull it out to check fluid level**.
+6 | Transmission dipstick | p=transdip | **Transmission Fill Dipstick: (pink cap)** Indicate the **cap is on tight** and there is **no damage**. Mention you would normally **pull it out to check fluid level**.
+7 | Heater hoses | p=hoses | **Heater Hoses:** They are **secure in a housing**. They are **connected at both ends** with **no cuts, frays, or leaks**.
+8 | Frame | p=frame | **Frame:** Runs the **full length of the bus**. It is **properly mounted** and **secured with bolts**. **None of the bolts are missing**, it is **not cracked or bent** and shows **no sign of rust**.
+
+## steer | Steering mechanism | 10 | steering | say | Keep the hood open
+1 | Wheel to column | p=swheel,column | The **STEERING WHEEL** is connected to the **STEERING COLUMN**
+2 | Column to box | p=column,sbox | The **STEERING COLUMN** is connected to the **STEERING BOX**. The Steering Box is **properly mounted, not leaking**, all hoses are **connected at both ends**, **no cuts, frays, or leaks**, and **functions properly**
+3 | Box to pitman arm | p=sbox,pitman | The **STEERING BOX** is connected to the **PITMAN ARM**.
+4 | Pitman arm to drag link | p=pitman,drag | The **PITMAN ARM** is connected to the **DRAG LINK**
+5 | Drag link to knuckle | p=drag,knuckle | **DRAG LINK** is connected to the **STEERING KNUCKLE**
+5a | Linkage is secure | p=* lab=ind | **Indicate** (the steering linkage is **secure** and the **castle nuts and cotter pins are present and tight** and all the **joints and sockets** are **not worn or loose**)
+! | Proper working order | p=* | **MUST SAY: "The steering mechanism is in proper working order."**
+
+## fwheel | Front wheel inspection (driver's side) | 10 | fsusp | say | You must say
+1 | Leaf spring | p=leaf,hanger,ubolt,frame | **Leaf Spring:** The leaf spring is **connected at both ends into hangers**. They are **connected to the frame by bolts**. The leaf is then **connected in the middle by U-bolts to the axle**. There are **no missing, cracked, broken or loose leafs**.
+2 | Tie rod | p=tie | **Tie Rod:** The tie rod is **connected at both ends**. It is **not cracked or bent**.
+3 | Shock absorber | p=shock | **Shock Absorber:** The shock absorber is **connected at both ends**, it is **not cracked, damaged or leaking**
+4 | Air brake chamber | p=chamber | **Air Brake Chamber:** It is **properly mounted** with **no loose or missing clamps**, **not leaking, cracked, or dented**. **Hoses are connected at both ends**, and there are **no cuts, frays, or leaks**
+5 | Slack adjuster | p=slack | **Slack Adjuster:** Mounted at a **90 degree angle**, is **secure**, and **not broken**. The push rod has **no more than one inch of play**
+6 | Brake drums and linings | p=drum lab=point | **Brake Drums and Linings:** Drums are **free of holes, cracks, or dents**. The linings have **adequate padding**. (You cannot see, just point to the area)
+7 | Frame | p=frame | **FRAME:** Runs the **length of the bus**. It is **properly mounted at both ends** and **secured with bolts**. **None of the bolts are missing** and it is **not cracked or bent** and shows **no sign of rust**.
+
+## ftire | Front tire (driver's side) | 11 | wheel | say | You must say
+1 | Tread | p=tread | **Tire:** Has at least **4/32 tread depth** & **no signs of misalignment**
+2 | Outer wall | p=wall | **Outer Wall:** has **no cuts or bulges**
+3 | Not slipping | p=bead | **Tire:** is **not slipping** from the rim
+4 | Rim | p=rim | **Rim:** has **no illegal welds or dents** and is **well mounted**
+5 | Lug nuts | p=lugs | **Lug Nuts:** are **all present and tight** with **no damage** (touch a few). Tell the tester you know they are tight because there are **no rust trails or shiny threads**
+6 | Hub | p=hub | **Hub:** is **secure** and **not leaking**
+7 | Valve stem | p=valve | **VALVE STEM:** is **not cracked or damaged**, cap is **on tight** and is **not leaking**
+8 | Splash guard | p=splash | **SPLASH GUARD:** is **secure** and **not damaged** (HIT IT)
+9 | Tire pressure | p=gauge | **Tire Pressure:** tire has **good pressure** (tell the tester you have a pressure gauge to check tire if they would like you to check)
+! | Same on the door side | p=* dia=fsusp lab=ind | **FRONT WHEEL SUSPENSION AND FRONT TIRE MECHANISMS (driver's side)** Indicate that these things are the same on the door side – ask the tester if he/she would like you to mention them again.
+! | Shut the hood | p= lab=do | ***SHUT THE HOOD, LOCK BOTH SIDES AND PROCEED TO THE DRIVER'S SIDE REAR WHEEL***
+
+## rtire | Rear tire area (driver's side) | 12 | rsusp | say | You must say
+1 | Leaf springs | p=leaf,hanger,ubolt,frame | **Leaf Springs:** **Connected** at both ends **into hangers**, which are **secured to the frame by bolts**; **none of the bolts are missing**. The **leaf is connected** in the middle **by 2 U-bolts** to the axle. There are **no cracked, broken, loose, or missing leafs**.
+2 | Air brake chamber | p=chamber | **Air Brake Chamber:** Properly **mounted**, with **no loose or missing clamps**, **not leaking, cracked or dented**. Hoses are **connected at both ends** and there are **no cuts, frays or leaks**
+3 | Slack adjuster | p=slack | **Slack Adjuster:** Mounted at **90 degree angle**, it is **secure** and **not broken** and the **push rod** has **no more than one inch play**.
+4 | Brake drums and linings | p=drum | **Brake Drums and Linings:** Drums are **free of any holes, cracks, or dents** and the linings have **adequate padding**.
+5 | Shock absorber | p=shock | **Shock Absorber:** Is **properly mounted** and **connected at both ends**, it is **not cracked** and is **not leaking**.
+6 | Dual spacing | p=dualgap | **Dual Spacing:** Rims are **connected hub to hub** to allow for **adequate spacing**.
+7 | Rear air bags | p=bags | **Rear Air Bags:** Are **properly mounted** with **no damage**. Hoses are **connected at both ends** with **no cuts, frays, or leaks**.
+8 | Frame | p=frame | **Frame:** Runs the **full length of the bus**. It is **properly mounted, secured by bolts**, and **none of the bolts are missing**. It is **not cracked or bent** and **no signs of rust**
+
+## duals | Duals (driver's side) | 13 | wheel | say | You must say
+1 | Tires | p=tread | **Tires:** Have at least **2/32 tread depth** & **no sign of misalignment**
+2 | Outer wall | p=wall,bead | **Outer Wall of Tire:** Has **no cuts or bulges**. Tire is **not slipping** from **rim**.
+3 | Rims | p=rim | **Rims:** Have **no illegal welds or dents** and are **well mounted**.
+4 | Lug nuts | p=lugs | **Lug Nuts:** Are **all present** and **tight** with **no damage**. **(touch a few)** Tell the tester you know they **are tight** because there are **no rust trails or shiny threads**
+5 | Hub | p=hub | **Hub:** Is **secure** and **not leaking**.
+6 | Valve stems | p=valve | **Valve Stems:** Are **not broken or damaged**. Cap is **on tight**.
+7 | Splash guard | p=splash | **Splash Guard:** Is **secure** and **not damaged** (tap with the thumper)
+8 | Tire pressure | p=gauge | **Tire Pressure:** Tire pressure is good. **(tell the tester you have a tire gauge, ask if they want you to check the pressure)**
+
+## fuel | Rear tire area (door side) | 13 | side-door | say | You must say
+1 | Fuel door | p=fueldoor | **Fuel Door:** Open door and indicate it **is secure**. Check that the **fuel cap is on tight**.
+2 | Fuel tank | p=tank | **Fuel Tank:** Is **protected** by a **cage** to **prevent damage**. It is **not leaking** and is **well mounted** and **secured with straps**.
+3 | Duals and suspension | p=* dia=rsusp lab=ind | **Indicate that the tire and suspension mechanisms are the same as the other side.** Ask the tester if he/she would like you to check them again.
+
+## under | Outside bus inspection | 14 | under | say | Door side and under the bus
+1 | Frame | p=frame | **FRAME:** Runs the **full length** of the **bus**. It is **connected by bolts** and **none** of the **bolts** are missing. It is **not cracked, broken,** or **bent** and has **no sign of rust.**
+2 | Muffler | p=muffler | **MUFFLER:** It is **secured** with **hangers** at both ends and is **properly mounted.** There are **no holes** and nothing is **hanging down.**
+3 | Tail pipe | p=tailpipe | **TAIL PIPE:** It is **secured** by **clamps** and **extends past the side of the bus** and is **properly mounted.** There are **no holes** and nothing is **hanging down.** Entire **exhaust system** is **secured, not leaking,** and **not touching** any **wires, fuel** or **air lines**
+4 | Drive shaft | p=shaft | **DRIVE SHAFT:** It is **secured** at **both ends** and **the U-joints** appear to be free of any **foreign objects** and is **properly mounted**, it is **not bent, twisted** or **cracked** with **nothing hanging down.**
+5 | Cross mounts | p=cross | **CROSS MOUNTS:** **properly mounted** with **bolts** and **no bolts are missing.** They are **placed** the **length** of the **bus** and they are **not bent or broken**
+6 | Floor | p=floor | **FLOOR** – There are **no visible signs** of any **breaks or holes** in the floor
+7 | DEF additive | p=def | **DEF Additive:** Open door and indicate the **door** is **secure** and **cap** is on **tight** & **not leaking.**
+8 | Rear of engine and transmission | p=engrear | **REAR OF ENGINE & TRANSMISSION:** there are **no visible** signs of **leaking**
+
+## interior | Interior inspection and emergency exits | 15 | plan | say | Back into the bus
+0 | Back in | p=rail,tread,step dia=entry | **YOU MUST SAY: "The handrails are secure, the tread is good and free of debris" as you enter back into the bus.**
+1 | Close the door | p=door lab=do | **Close the Door:** **Make sure the tester is clear of the door**
+2 | Windows | p=win lab=ind | **Windows:** All windows are **clean**, free from **unapproved stickers**, **cracked** or **broken**.
+3 | Aisle | p=aisle lab=ind | **Aisle:** Clean and **clear** from any **debris**, tread is in **good** working order
+4 | Backs of seats | p=seatbacks lab=do | **Backs of Seats:** Check **all** to see if they are **secure** (pull on them)
+5 | First roof hatch | p=hatch1 lab=do | **First Roof Hatch:** Open, which activates alarm. **Mention** it is **functioning properly**. Close/make sure it is back in the **locked position**.
+6 | Emergency side windows | p=sidewin | **Emergency Side Windows (2 sets):** You must say: **Windows open freely and alarm sounds, and locks into place.** **Must open and say for all four windows.**
+7 | Second roof hatch | p=hatch2 lab=do | **Second Roof Hatch:** Open, which activates alarm. **Check Strobe light.** **Mention** it is **functioning properly**. Close/make sure it is back in the **locked position**.
+8 | Emergency back door | p=exit | **Emergency Back Door:** Open, alarm will sound, **mention** – door **swings freely** and **locks into place**. **Must say:** **"The emergency door functions properly."**
+9 | Bottoms of seats | p=seatbottoms lab=do | **Bottoms of Seats:** Check that **the bottoms are secure**.
+10 | Sit and buckle | p=driverseat lab=do | **Sit in your seat and put your seat belt on.**
+11 | Strobe off | p=sw_strobe dia=cab lab=do | **Turn off strobe light.**
+12 | Cover everything | p= lab=do | **Take a moment to make sure you have covered everything.**
+13 | Ready for the next part | p= lab=tell | **When you are sure you are done with the pre-trip, TELL the TESTER you are READY for the next portion of the TEST.**
+14 | Restart, headlights on | p=key dia=dash lab=do | **You can now RESTART your bus and make sure your HEADLIGHTS ARE ON!**
+
+## after | After the driving test | 16 | plan | do | When you return to the garage
+1 | Shut the engine off | p= dia=dash | **WHEN YOU RETURN TO THE ROCKFORD GARAGE AFTER YOUR DRIVING PORTION OF THE TEST, YOU WILL NEED TO SHUT THE ENGINE OFF.**
+2 | Key all the way left | p=key dia=dash | **TURN THE KEY ALL THE WAY TO THE LEFT.**
+3 | No Child Left Behind | p=exit | **GO TO THE BACK OF THE BUS AND PUSH THE "NO CHILD LEFT BEHIND" BUTTON. (Red Button)**
+
+## hints | Helpful hints to remember | 17 | road | note | Driving reminders
+1 | Slow your roll | p=bus | Slow your roll for more control, watch your speed!!!
+2 | Look left and right | p=cross | DON'T FORGET TO LOOK / TURN YOUR HEAD LEFT AND RIGHT BEFORE, DURING, AND AFTER AS YOU GO THROUGH INTERSECTIONS!!!!
+3 | Use your blinkers | p=bus | USE YOUR BLINKERS
+4 | Hold your lane | p=lane | HOLD YOUR LANE
+5 | The white line | p=stopline | DON'T CROSS OVER THE WHITE LINE AT INTERSECTIONS
+6 | Leave yourself an out | p=gap | LEAVE YOURSELF AN OUT WHEN STOPPING BEHIND SOMEONE
+7 | Eyes moving, mirrors | p=mirrors | KEEP YOUR EYES MOVING AND CHECK YOUR MIRRORS
+8 | Stop signs | p=stop,stopline | Stop behind the white line at stop sign, then move up to see and come to a full stop again and bob and weave before pulling out.
+9 | Both hands on the wheel | p=wheel | KEEP BOTH HANDS ON STEERING WHEEL / NO PALMING or talking with your hands
+10 | Left-hand turns | p=cross | WHEN MAKING LEFT-HAND TURNS DO NOT CREEP OUT INTO THE INTERSECTION
+11 | Duals and tail swing | p=mirrors,bus | ALWAYS CHECK MIRRORS FOR DUAL PLACEMENT WHEN TURNING AND WATCH YOUR TAIL SWING
+12 | Backing up | p=bus,gap | TRY TO AVOID BACKING UP, IT'S VERY DANGEROUS!!! But if you have to back up, start in proper position for the type of backing you need to do, check your surroundings, back slowly, and back towards the driver side because it's easier to see. If someone is there to guide you, ask them to help you.

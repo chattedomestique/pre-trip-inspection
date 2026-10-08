@@ -1,0 +1,31 @@
+/* Diagrams. Context shapes (.ctx) stay faded; parts are quiet outlines and the ones being checked fill and get a frame. */
+.dia{display:block;inline-size:100%;block-size:auto;max-block-size:30svh;margin-inline:auto;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.dia *{vector-effect:non-scaling-stroke}
+.ctx{opacity:.4}
+.ctx .b{fill:var(--paper);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}
+.ctx .bl{fill:none;stroke:var(--ink);stroke-width:var(--bw-thin)}
+.ctx .gl{stroke:var(--ink);stroke-width:var(--bw-thin);fill:none}
+.ctx .tire{fill:var(--ink-mute);stroke:var(--ink-mute);stroke-width:var(--bw)}
+.ctx .hub{fill:var(--paper-3);stroke:none}
+.ctx .axle{fill:var(--paper);stroke:none}
+.dia .lbl,.dia .nl{fill:var(--ink-soft);font-family:var(--font-sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
+.dia .lbl{font-size:11px}
+.dia .nl{font-size:9px;letter-spacing:.04em}
+.dia .p{fill:var(--paper-2);stroke:var(--ink-mute);stroke-width:var(--bw-thin);stroke-linejoin:round}
+.dia .tire.p{fill:var(--ink-mute)}
+.dia .l{fill:none;stroke:var(--ink-mute);stroke-width:var(--bw-thin);stroke-linecap:round}
+.dia .s{fill:none;stroke:var(--ink-mute);stroke-width:var(--bw);stroke-linecap:round;stroke-linejoin:round}
+.dia .rail{fill:none;stroke:var(--ink-mute);stroke-width:var(--bw-thin)}
+.dia .is-on .p{fill:var(--accent);stroke:var(--ink);stroke-width:var(--bw)}
+.dia .is-on .l{stroke:var(--on-accent)}
+.dia .is-on .s{stroke:var(--ink);stroke-width:3px}
+.dia .is-on .rail{stroke:var(--ink);stroke-width:var(--bw)}
+.dia .halo{fill:none;stroke:var(--ink);stroke-width:var(--bw)}
+.dia .hit{fill:transparent;stroke:none}
+.dia .part.is-link{cursor:pointer}
+.dia .ctx,.dia .lbl,.dia .nl,.dia .part{transition:opacity var(--dur-move) var(--ease-flip)}
+.dia .part{opacity:.3}
+.dia .part.is-on{opacity:1}
+.dia .p,.dia .l,.dia .s,.dia .rail{transition:fill var(--dur-move) var(--ease-flip),stroke var(--dur-move) var(--ease-flip),stroke-width var(--dur-move) var(--ease-flip)}
+.dia .halo{transform-box:fill-box;transform-origin:center;animation:halo-in var(--dur-move) var(--ease-out) both}
+@keyframes halo-in{from{opacity:0;transform:scale(calc(1 + .4 * var(--move)))}to{opacity:1;transform:scale(1)}}
